@@ -1,0 +1,52 @@
+<header class="main-header">
+<!-- Logo -->
+<a href="/" class="logo">
+  <!-- mini logo for sidebar mini 50x50 pixels -->
+  <span class="logo-mini"><b>F.</b>CO</span>
+  <!-- logo for regular state and mobile devices -->
+  <span class="logo-lg"><b>Fin</b>CO</span>
+</a>
+<!-- Header Navbar: style can be found in header.less -->
+<nav class="navbar navbar-static-top">
+  <!-- Sidebar toggle button-->
+  <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
+    <span class="sr-only">Toggle navigation</span>
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+  </a>
+
+
+</nav>
+</header>
+<!-- Left side column. contains the sidebar -->
+<aside class="main-sidebar">
+<!-- sidebar: style can be found in sidebar.less -->
+<section class="sidebar">
+  <!-- Sidebar user panel -->
+  <div class="user-panel">
+    <div class="pull-left image">
+      <img src="/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+    </div>
+  </div>
+  <!-- sidebar menu: : style can be found in sidebar.less -->
+  <ul class="sidebar-menu" data-widget="tree">
+    <li class="header">MAIN NAVIGATION</li>
+    <li class="treeview">
+      <a href="/">
+        <i class="fas fa-home"></i> <span>Dashboard</span>
+      </a>
+      <a href="#">
+        <i class="fas fa-question"></i> <span>Contact</span>
+      </a>
+    </li>
+    <li class="header">Users</li>
+    <li><%= link_to 'Edit Profile', edit_user_registration_path %></li>
+    <li><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></li>
+    <!-- <li class="header">Users</li>
+    <li><a href="/users/sign_up/"><i class="fa fa-book"></i><span>Register</span></a></li>
+    <li><a href="/users/sign_up"><i class="fa fa-user"></i><span>Login </span> </a> </li> -->
+  </ul>
+</section>
+<!-- /.sidebar -->
+</aside>
