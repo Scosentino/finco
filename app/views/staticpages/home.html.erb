@@ -17,7 +17,15 @@
 
 
         <%if @stock %>
-        <%= @stock.company_name %>
+        <p>Company Name: <%= @stock.company_name %></p>
+        <p>Company Symbol: <%= @stock.symbol %></p>
+        <p>Company Main Sector: <%= @stock.sector%></p>
+        <p>Today's Open: <%= @stock.open %></p>
+        <p>Today's Close: <%= @stock.close %><h6>Note- If before market close this value will be from previous day</h6></p>
+        <p>Current Price: <%= @stock.latest_price %></p>
+        <p>Current Price Pulled at: <%= @stock.latest_time %></p>
+        <p>Daily High: <%= @stock.high %></p>
+        <p>Daily Low: <%= @stock.low %></p>
         <% elsif @nothing %>
         <%= @nothing%>
         <%end %>
