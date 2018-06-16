@@ -1,6 +1,6 @@
 class UserStocksController < ApplicationController
   def index
-    @stocks = UserStock.all
+    @stocks = current_user.stocks
   end
 
   def new
@@ -8,12 +8,13 @@ class UserStocksController < ApplicationController
   end
 
   def create
-    byebug
-    @stock = UserStock.new(user_stock_params)
-    if @stock.save
+    stock = Stock.find_by symbol: params[:user_stock][:symbol].downcase
+    if stock.present?
+      current_user.stocks << stock
       redirect_to user_stocks_path, notice: "Saved Stock"
     else
-      render :new
+      @stock = UserStock.new
+      render :new, notice: 'no such stock found.'
     end
   end
 
@@ -30,20 +31,20 @@ class UserStocksController < ApplicationController
     end
   end
 
-    def destroy
-      @stock = UserStock.find_by(id: params[:id])
-      if @stock.destroy
-        redirect_to user_stocks_path, notice: "Stock Deleted"
-      else
-        redirect_to user_stocks_path, notice: "Can't destroy stock"
-      end
+  def destroy
+    @stock = UserStock.find_by(id: params[:id])
+    if @stock.destroy
+      redirect_to user_stocks_path, notice: "Stock Deleted"
+    else
+      redirect_to user_stocks_path, notice: "Can't destroy stock"
     end
+  end
 
-private
+  private
 
-def user_stock_params
-  params.require(:user_stock).permit(:symbol)
-end
+  def user_stock_params
+
+  end
 
 
 end
