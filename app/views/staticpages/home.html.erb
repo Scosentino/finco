@@ -9,6 +9,7 @@
       </ol>
     </section>
 
+
     <section class="content">
       <%= form_tag dashboard_path, :method => 'POST' do %>
         <%= text_field_tag 'id', nil, placeholder: 'Enter a company symbol', size: 50%>
@@ -34,5 +35,5 @@
           <%= @error %>
         <% end %>
 
-        
+
     </section>

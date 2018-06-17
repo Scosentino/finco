@@ -1,0 +1,19 @@
+<section class="content">
+  <%= form_for Stock.new, url: stock_path, method: 'get' do |f| %>
+  <div class="field">
+    <%= f.label :symbol%>
+    <%= f.text_field :symbol%>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+  <%end%>
+<br>
+  <% Stock.all.each do |stock|%>
+  <%=  stock.symbol %>
+  <%= link_to 'View', stock_path(stock: {symbol: stock.symbol}) %>
+  <br>
+  <% end %>
+
+
+</section>

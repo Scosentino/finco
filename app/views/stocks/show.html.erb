@@ -1,0 +1,26 @@
+
+<section class="content">
+<%if @stock %>
+
+<p>Company Name: <%= @stock.company_name %></p>
+<p>Company Symbol: <%= @stock.symbol %></p>
+<p>Company Main Sector: <%= @stock.try(:sector) %></p>
+<p>Today's Open: <%= @stock.try(:open) %></p>
+<p>Today's Close: <%= @stock.try(:close) %><h6>Note- If before market close this value will be from previous day</h6></p>
+<p>Current Price: <%= @stock.try(:latest_price) %></p>
+<p>Current Price Pulled at: <%= @stock.try(:latest_time) %></p>
+<p>Daily High: <%= @stock.try(:high) %></p>
+<p>Daily Low: <%= @stock.try(:low) %></p>
+
+<% elsif @nothing %>
+<%= @nothing%>
+<%end %>
+
+<% if @error %>
+  <%= @error %>
+<% end %>
+
+<%= link_to 'Add to your UserStock', new_user_stock_path(id: @stock.id)  %>
+
+
+</section>

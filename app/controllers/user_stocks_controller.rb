@@ -1,21 +1,47 @@
 class UserStocksController < ApplicationController
   def index
-    @stocks = current_user.stocks
+    @stocks = current_user.user_stocks
   end
 
+  # def search
+  #   if params[:id] == ""
+  #     @nothing = "Enter a Valid Symbol"
+  #   else
+  #     begin
+  #       @stock = Stock.find_by(symbol: params[:id])
+  #       @stock = StockQuote::Stock.quote(params[:id]) if @stock.blank?
+  #     rescue
+  #       @error = "Check your search and try again."
+  #     end
+  #   end
+  # end
+
+  def show
+    @user_stock = UserStock.find_by_id(params[:id])
+    if @user_stock.present?
+      @stock = @user_stock.stock
+    else
+      redirect_to root_path
+    end
+  end
+
+
   def new
-    @stock = UserStock.new
+    @stock = Stock.find_by(id: params[:id])
+    if @stock.present?
+      @user_stock = UserStock.new
+    else
+      redirect_to root_path
+    end
   end
 
   def create
-    stock = Stock.find_by symbol: params[:user_stock][:symbol].downcase
-    if stock.present?
-      current_user.stocks << stock
-      redirect_to user_stocks_path, notice: "Saved Stock"
-    else
-      @stock = UserStock.new
-      render :new, notice: 'no such stock found.'
-    end
+    @user_stock = UserStock.new(user_stock_params)
+    if @user_stock.save
+       redirect_to user_stock_path(@user_stock)
+     else
+       render :new
+     end
   end
 
   def edit
@@ -43,7 +69,7 @@ class UserStocksController < ApplicationController
   private
 
   def user_stock_params
-
+    params.require(:user_stock).permit(:stock_id, :user_id)
   end
 
 

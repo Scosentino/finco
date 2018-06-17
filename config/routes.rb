@@ -1,12 +1,15 @@
 Rails.application.routes.draw do
   devise_for :users
   resources :user_stocks
-
+  resources :stocks, only: :index
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+  get '/show', to: 'stocks#show', as: :stock
+
 
   devise_scope :user do
     authenticated :user do
-      root 'staticpages#home', as: :authenticated_user
+      root 'user_stocks#index', as: :authenticated_user
     end
     unauthenticated :user do
       root 'devise/sessions#new', as: :unauthenticated_root
@@ -16,8 +19,5 @@ Rails.application.routes.draw do
 
 
 
-  get '/about' => 'staticpages#about'
-  get '/' => 'staticpages#home', as: :dashboard
-  post '/' => 'staticpages#home'
 
 end
