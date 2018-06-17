@@ -1,5 +1,21 @@
-<%= form_for @user_stock do |f| %>
-<%= f.hidden_field :stock_id, value: @stock.id %>
-<%= f.hidden_field :user_id, value: current_user.id %>
-<%= f.submit 'Track'%>
-<% end %>
+<section class="content-header">
+  <h1>Add this stock to you tracked stocks</h1>
+</section>
+
+<section class="content">
+  <div class="row">
+    <div class="col-md-4">
+      <%= form_for @user_stock do |f| %>
+      <%= f.hidden_field :stock_id, value: @stock.id %>
+      <%= f.hidden_field :user_id, value: current_user.id %>
+      <%= f.submit 'Track', class: 'btn btn-default'%>
+      <% end %>
+    </div>
+  </div>
+  <br>
+  <div class="row">
+    <div class="col-md-4">
+      <p>Soon you will be able to create a position from Tracked stocks to replicate your portfolio movement</p>
+    </div>
+  </div>
+</section>

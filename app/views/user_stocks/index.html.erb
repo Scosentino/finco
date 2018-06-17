@@ -1,12 +1,26 @@
+<section class="content-header">
+  <h1>Tracked Stocks & Positions</h1>
+</section>
 <section class="content">
-
-    <%= link_to 'View Stocks', stocks_path %>
-
-
-
-    <% @stocks.each do |stock|%>
-    <%= stock.stock.symbol %>
-    <br>
-    <%end%>
-
+  <div class="box">
+    <div class="box-header">
+          <%= link_to 'Find More Stocks', stocks_path %>
+    </div>
+    <div class="box-body">
+      <div class="row">
+        <% @stocks.each do |stock|%>
+        <%= link_to stock do %>
+        <div class="col-sm-12 col-md-2">
+          <!-- <h4 class="text-center">Success</h4> -->
+          <div class="color-palette-set text-center">
+            <div class="bg-green disabled color-palette user-stock-title"><span><%= stock.stock.symbol %></span></div>
+            <div class="bg-green color-palette"><span><%= stock.stock.latest_price %></span></div>
+            <div class="bg-green-active color-palette"><span><%= stock.stock.running_low + ' - ' + stock.stock.running_high%></span></div>
+          </div>
+        </div>
+        <% end %>
+        <%end%>
+      </div>
+    </div>
+  </div>
 </section>

@@ -1,26 +1,123 @@
+<section class="content-header">
+<h1><%= @stock.company_name %> </h1> <small>Symbol: <%= @stock.symbol %></small>
+<ol class="breadcrumb">
+  <li><%= link_to '<i class="fa fa-search"></i> Market Search /'.html_safe, stocks_path%></li>
 
+</ol>
+
+</section>
 <section class="content">
-<%if @stock %>
 
-<p>Company Name: <%= @stock.company_name %></p>
-<p>Company Symbol: <%= @stock.symbol %></p>
-<p>Company Main Sector: <%= @stock.try(:sector) %></p>
-<p>Today's Open: <%= @stock.try(:open) %></p>
-<p>Today's Close: <%= @stock.try(:close) %><h6>Note- If before market close this value will be from previous day</h6></p>
-<p>Current Price: <%= @stock.try(:latest_price) %></p>
-<p>Current Price Pulled at: <%= @stock.try(:latest_time) %></p>
-<p>Daily High: <%= @stock.try(:high) %></p>
-<p>Daily Low: <%= @stock.try(:low) %></p>
+<div class="row">
+  <div class="col-md-6 col-sm-12 col-md-offset-3">
+          <!-- Widget: user widget style 1 -->
+          <div class="box box-widget widget-user">
+            <!-- Add the bg color to the header using any of the bg-* classes -->
+            <div class="widget-user-header">
+              <div class="widget-user-username pull-right">
+                <%= link_to 'Track this Stock', new_user_stock_path(id: @stock.id), class: 'btn btn-default'  %>
+              </div>
+              <h3 class="widget-user-username"><%= @stock.chief_executive_officer %></h3>
+              <h5 class="widget-user-desc">Current CEO</h5>
 
-<% elsif @nothing %>
-<%= @nothing%>
-<%end %>
+            </div>
+            <div class="widget-user-image">
+              <img class="img-circle" src="<%= @stock.try(:logo) %>" alt="User Avatar">
+            </div>
+            <div class="box-footer">
+              <div class="row">
+                <div class="col-sm-4 border-right">
+                  <div class="description-block">
+                    <h5 class="description-header"><%= @stock.try(:running_low)%> - <%= @stock.try(:running_high) %></h5>
+                    <span class="description-text">52 Week Range</span>
+                  </div>
+                  <!-- /.description-block -->
+                </div>
+                <!-- /.col -->
+                <div class="col-sm-4 border-right">
+                  <div class="description-block">
+                    <h5 class="description-header"><%= @stock.try(:year_to_date_change)%></h5>
+                    <span class="description-text">Year To Date Change</span>
+                  </div>
+                  <!-- /.description-block -->
+                </div>
+                <!-- /.col -->
+                <div class="col-sm-4">
+                  <div class="description-block">
+                    <h5 class="description-header"><%= @stock.try(:open) %></h5>
+                    <span class="description-text">Last Open</span>
+                  </div>
+                  <!-- /.description-block -->
+                </div>
+                <!-- /.col -->
+              </div>
+              <!-- /.row -->
+            </div>
+          </div>
+          <!-- /.widget-user -->
+        </div>
+        <!-- /.col -->
+</div>
 
-<% if @error %>
-  <%= @error %>
-<% end %>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <div class="nav-tabs-custom">
+    <ul class="nav nav-tabs pull-right">
+      <li class="active"><a href="#tab_1-1" data-toggle="tab">General information</a></li>
+      <li class="dropdown">
+        <a class="dropdown-toggle success" data-toggle="dropdown" href="#">
+          Actions <span class="caret"></span>
+        </a>
+        <ul class="dropdown-menu">
+          <li role="presentation"><%= link_to 'Track this Stock', new_user_stock_path(id: @stock.id)  %></li>
+        </ul>
+      </li>
+      <li class="pull-left header"><i class="fa fa-certificate"> Company Insight</i> </li>
+    </ul>
 
-<%= link_to 'Add to your UserStock', new_user_stock_path(id: @stock.id)  %>
+    <div class="tab-content">
+      <div class="tab-pane active" id="tab_1-1">
+        <%if @stock %>
+        <p>Company Main Sector: <%= @stock.try(:sector) %></p>
+        <p>Market Cap: <%= @stock.try(:market_cap)%></p>
+        <p>Today's Close: <%= @stock.try(:close) %><h6>Note- If before market close this value will be from previous day</h6></p>
+        <p>Current Price: <%= @stock.try(:latest_price) %></p>
+        <p>Current Price Pulled at: <%= @stock.try(:latest_time) %></p>
+        <p>Daily High: <%= @stock.try(:high) %></p>
+        <p>Daily Low: <%= @stock.try(:low) %></p>
+        <p>Primary Exchange: <%= @stock.try(:primary_exchange)%></p>
+        <p>Calculation Price: <%= @stock.try(:calculation_price)%></p>
+        <p>Open Time: <%= @stock.try(:open_time)%></p>
+        <p>Close Time: <%= @stock.try(:close_time)%></p>
+        <p>High: <%= @stock.try(:high)%></p>
+        <p>Low: <%= @stock.try(:low) %></p>
+        <p>Latest Time: <%= @stock.try(:latest_time)%></p>
+        <p>Latest Update: <%= @stock.try(:latest_update)%></p>
+        <p>Latest Volume: <%= @stock.try(:latest_volume)%></p>
+
+
+        <% elsif @nothing %>
+        <%= @nothing%>
+        <%end %>
+
+        <% if @error %>
+          <%= @error %>
+        <% end %>
+
+      </div>
+
+
+
+    </div>
+  </div>
+
+  </div>
+</div>
+
+
+
+
+
 
 
 </section>
