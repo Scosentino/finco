@@ -5,6 +5,12 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+gem 'capistrano', '~> 3.6'
+gem 'capistrano-rails', '~> 1.1'
+gem 'capistrano-rvm'
+gem 'capistran3-puma', github: 'seuros/capistano-puma'
+
+
 gem 'devise'
 gem 'stock_quote', '~> 2.0'
 gem 'jquery-rails'
