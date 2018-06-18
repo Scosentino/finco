@@ -1,10 +1,10 @@
 set :stage, :production
-server 'your_server_ip', user: 'deploy', roles: %w{app web db}
+server '45.56.120.108', user: 'deploy', roles: %w{app web db}
 
 
-role :app, %w{deploy@your_server_ip}
-role :web, %w{deploy@your_server_ip}
-role :db,  %w{deploy@your_server_ip}
+role :app, %w{deploy@45.56.120.108}
+role :web, %w{deploy@45.56.120.108}
+role :db,  %w{deploy@45.56.120.108}
 
 
 set :branch, 'master'
