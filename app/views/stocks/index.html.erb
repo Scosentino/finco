@@ -3,51 +3,26 @@
 </section>
 <section class="content">
   <div class="box">
-      <div class="box-header">
-        <button class="btn btn-default pull-right"type="button" data-toggle="modal" data-target="#modal-search-stock-market">Find more stocks</button>
-      </div>
-      <div class="box-body">
-        <div class="row">
-          <% Stock.all.each do |stock|%>
-          <%= link_to stock_path(stock: {symbol: stock.symbol}) do %>
-          <div class="col-xs-12 col-md-2">
-            <div class="color-palette-set">
-              <div class="bg-green disabled color-palette user-stock-title"><span><%=  stock.symbol %></span></div>
-              <div class="bg-green color-palette text-center"><span><%= stock.latest_price %></span></div>
-              <div class="bg-green-active color-palette text-center"><span><%= link_to "#{stock.sector}", stock_path(stock: {symbol: stock.symbol}), class: 'view-stock-show' %></span></div>
-            </div>
+    <div class="box-header">
+      <button class="btn btn-default pull-right"type="button" data-toggle="modal" data-target="#modal-search-stock-market">Find more stocks</button>
+    </div>
+    <div class="box-body">
+      <div class="row">
+        <% Stock.all.each do |stock|%>
+        <%= link_to stock_path(stock: {symbol: stock.symbol}) do %>
+        <div class="col-xs-12 col-md-2">
+          <div class="color-palette-set">
+            <div class="bg-green disabled color-palette user-stock-title"><span><%=  stock.symbol %></span></div>
+            <div class="bg-green color-palette text-center"><span><%= stock.latest_price %></span></div>
+            <div class="bg-green-active color-palette text-center"><span><%= link_to "#{stock.sector}", stock_path(stock: {symbol: stock.symbol}), class: 'view-stock-show' %></span></div>
           </div>
-          <% end %>
-          <% end %>
         </div>
+        <% end %>
+        <% end %>
       </div>
+    </div>
   </div>
 </section>
 
-
-<div class="modal modal-default fade" id="modal-search-stock-market">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title">Search for any Publicly Traded US Security</h4>
-      </div>
-      <div class="modal-body">
-        <%= form_for Stock.new, url: stock_path, method: 'get' do |f| %>
-        <div class="field">
-          <%= f.label :symbol%>
-          <%= f.text_field :symbol%>
-        </div>
-        <div class="submit">
-          <%= f.submit 'Search', class: 'btn btn-default' %>
-        </div>
-          <%end%>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
-
-      </div>
-
-    </div>
-  </div>
-</div>
+<!-- Stock Market Search Modal -->
+<%= render '/stocks/partials/stock-search'%>

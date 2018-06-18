@@ -7,24 +7,19 @@
     <meta name="og:type" content="Financial Tools">
     <meta name="og:image" content="http://res.cloudinary.com/dflr0ohqs/image/upload/v1529085365/stock.jpg">
     <%= csrf_meta_tags %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
-
-
   </head>
-
 <!-- if user is signed in show use navigation -->
 <!-- other wise use a basic body -->
-
 <% if user_signed_in? %>
   <body class="hold-transition skin-black sidebar-mini">
-  <%#= render 'layouts/partials/flash'%>
-  <%= render 'layouts/partials/nav'%>
-
-  <div class="content-wrapper">
-    <%= yield %>
+  <div class="wrapper">
+    <%= render 'layouts/partials/nav'%>
+    <div class="content-wrapper">
+      <%= yield %>
+    </div>
   </div>
   </body>
 <% else %>

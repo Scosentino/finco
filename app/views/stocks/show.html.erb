@@ -2,12 +2,9 @@
 <h1><%= @stock.company_name %> </h1> <small>Symbol: <%= @stock.symbol %></small>
 <ol class="breadcrumb">
   <li><%= link_to '<i class="fa fa-search"></i> Market Search /'.html_safe, stocks_path%></li>
-
 </ol>
-
 </section>
 <section class="content">
-
 <div class="row">
   <div class="col-md-6 col-sm-12 col-md-offset-3">
           <!-- Widget: user widget style 1 -->
@@ -19,7 +16,6 @@
               </div>
               <h3 class="widget-user-username"><%= @stock.chief_executive_officer %></h3>
               <h5 class="widget-user-desc">Current CEO</h5>
-
             </div>
             <div class="widget-user-image">
               <img class="img-circle" src="<%= @stock.try(:logo) %>" alt="User Avatar">

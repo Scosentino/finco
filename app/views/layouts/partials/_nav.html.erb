@@ -20,9 +20,6 @@
         <li><%= link_to '<i class="fas fa-search"></i> <span>Market Search</span>'.html_safe, stocks_path%></li>
       </ul>
     </div>
-
-
-
   </nav>
 </header>
 <!-- Left side column. contains the sidebar -->
@@ -34,6 +31,10 @@
       <div class="pull-left image">
         <img src="/img/upload.png" class="img-circle" alt="User Image">
       </div>
+      <div class="pull-left info">
+        <p>Sean Cosentino</p>
+        <p>scosentino21@gmail.com</p>
+      </div>
     </div>
     <!-- sidebar menu: : style can be found in sidebar.less -->
     <ul class="sidebar-menu" data-widget="tree">
@@ -42,8 +43,8 @@
         <%= link_to '<i class="fas fa-money"></i> <span>Tracked Stocks</span>'.html_safe, user_stocks_path %>
       </li>
       <li class="header">Users</li>
-      <li><%= link_to 'Edit Profile', edit_user_registration_path %></li>
-      <li><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></li>
+      <li><%= link_to '<i class="fas fa-user-cog"></i> <span>Edit Profile</span>'.html_safe, edit_user_registration_path %></li>
+      <li><%= link_to '<i class="fas fa-user-lock"></i> <span>Sign Out</span>'.html_safe, destroy_user_session_path, method: :delete %></li>
       <!-- <li class="header">Users</li>
       <li><a href="/users/sign_up/"><i class="fa fa-book"></i><span>Register</span></a></li>
       <li><a href="/users/sign_up"><i class="fa fa-user"></i><span>Login </span> </a> </li> -->
