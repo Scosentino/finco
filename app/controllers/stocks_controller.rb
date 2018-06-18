@@ -18,7 +18,6 @@ class StocksController < ApplicationController
               @stock_stats = StockQuote::Stock.stats(params[:stock][:symbol])
               if @stock.present?
                   @stock = Stock.save_new_stock(@stock, @stock_company, @stock_logo, @stock_stats)
-                  byebug
               else
                   @error = "Check your search and try again."
               end
