@@ -1,10 +1,11 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users, :controllers => {:registrations => "users/registrations"}
   resources :user_stocks
   resources :stocks, only: :index
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   get '/show', to: 'stocks#show', as: :stock
+
 
 
   devise_scope :user do

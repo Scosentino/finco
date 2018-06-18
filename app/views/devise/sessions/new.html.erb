@@ -3,7 +3,7 @@
     <a href="#"><b>Fin</b>Co</a>
   </div>
   <div class="login-box-body">
-    <p class="login-box-msg">Sign in</p>
+    <div class="login-box-msg">Sign in  </div>
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
     <div class="form-group has-feedback">
       <div class="field">
@@ -27,17 +27,18 @@
           </div>
         <% end -%>
       </div>
-      <div class="col-xs-4">
+
         <div class="actions">
           <%= f.submit "Log in" %>
         </div>
       <% end %>
-      </div>
-
+      <hr>
     </div>
 
 
-    <%= render "devise/shared/links" %>
+    <center>
+      <%= render "devise/shared/links" %>
+    </center>
   </div>
 
 </div>

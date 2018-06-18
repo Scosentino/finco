@@ -29,11 +29,12 @@
     <!-- Sidebar user panel -->
     <div class="user-panel">
       <div class="pull-left image">
-        <img src="/img/upload.png" class="img-circle" alt="User Image">
+        <%= gravatar_image_tag("#{current_user.email}", class: 'img-circle', :alt => "#{current_user.first_name}")%>
+        <!-- <img src="/img/upload.png" class="img-circle" alt="User Image"> -->
       </div>
       <div class="pull-left info">
-        <p>Sean Cosentino</p>
-        <p>scosentino21@gmail.com</p>
+        <p><%= current_user.first_name %></p>
+        <p style="font-size:65%"><%= current_user.email %></p>
       </div>
     </div>
     <!-- sidebar menu: : style can be found in sidebar.less -->

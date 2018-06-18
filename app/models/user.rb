@@ -6,4 +6,7 @@ class User < ApplicationRecord
 
   has_many :user_stocks
 
+  def full_name
+    full_name + ' ' + last_name
+  end
 end
