@@ -1,0 +1,22 @@
+<div class="tab-pane" id="tab_1-2">
+  <h1>Financial Overview</h1>
+  <p>Latest Close: <%= @stock.try(:close) %></p>
+  <p>Close Time: <%= @stock.try(:close_time)%></p>
+  <p>Latest Open: <%= @stock.try(:open)%></p>
+  <p>Open Time: <%= @stock.try(:open_time)%></p>
+  <hr>
+  <p>Daily High: <%= @stock.try(:high) %></p>
+  <p>Daily Low: <%= @stock.try(:low) %></p>
+  <hr>
+  <p>Calculation Price: <%= @stock.try(:calculation_price) %></p>
+  <p>Latest Volume: <%= @stock.try(:latest_volume) %></p>
+  <p>Profit Margin: <%= @stock.try(:company_profit_margin) %>%</p>
+  <p>Company Gross profit: <%= @stock.try(:company_gross_profit)%></p>
+  <p>Latest Earnings Per Share: <%= @stock.try(:latest_earnings_per_share) %></p>
+  <p>Shares Outstanding: <%= @stock.shares_outstanding %></p>
+  <p>Revenue Per Share: <%= @stock.revenue_per_share %></p>
+  <p>Revenue Per Employee: <%= @stock.revenue_per_employee%></p>
+  <p>Company Cash on Hand: <%= @stock.company_cash %></p>
+  <p>Total Company Debt: <%= @stock.company_debt %></p>
+
+</div>

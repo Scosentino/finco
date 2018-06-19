@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180618192342) do
+ActiveRecord::Schema.define(version: 20180619172001) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -48,6 +48,7 @@ ActiveRecord::Schema.define(version: 20180618192342) do
     t.string "revenue_per_employee"
     t.string "company_cash"
     t.string "company_debt"
+    t.boolean "trending", default: false
   end
 
   create_table "user_stocks", force: :cascade do |t|

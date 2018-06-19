@@ -1,5 +1,5 @@
 <section class="content-header">
-<h1><%= @stock.company_name %> </h1> <small>Symbol: <%= @stock.symbol %></small>
+<h1><%= @stock[:stock].try(:company_name) %> </h1> <small>Symbol: <%= @stock.symbol %></small>
 <ol class="breadcrumb">
   <li><%= link_to '<i class="fa fa-search"></i> Market Search /'.html_safe, stocks_path%></li>
 </ol>

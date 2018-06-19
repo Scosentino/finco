@@ -1,0 +1,21 @@
+<div class="tab-pane active" id="tab_1-1">
+  <%if @stock %>
+  <p>Current Price: <%= @stock.try(:latest_price) %></p>
+  <p><strong>Description</strong></p>
+  <p><%= @stock.company_description %></p>
+  <p>Company Industry: <%= @stock.try(:company_industry)%></p>
+  <%= link_to "#{@stock.company_website}", @stock.company_website%>
+  <hr>
+  <p>Market Cap: <%= @stock.try(:market_cap)%></p>
+  <p>Primary Exchange: <%= @stock.try(:primary_exchange)%></p>
+  <h5>Current Price Pulled at:<%= @stock.try(:latest_update)%> <%= @stock.try(:latest_time) %></h5>
+
+  <% elsif @nothing %>
+  <%= @nothing%>
+  <%end %>
+
+  <% if @error %>
+    <%= @error %>
+  <% end %>
+
+</div>
