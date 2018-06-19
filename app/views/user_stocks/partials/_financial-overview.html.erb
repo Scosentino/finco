@@ -1,22 +1,53 @@
 <div class="tab-pane" id="tab_1-2">
+  <center>
   <h1>Financial Overview</h1>
-  <p>Latest Close: <%= @stock.try(:close) %></p>
-  <p>Close Time: <%= @stock.try(:close_time)%></p>
-  <p>Latest Open: <%= @stock.try(:open)%></p>
-  <p>Open Time: <%= @stock.try(:open_time)%></p>
-  <hr>
-  <p>Daily High: <%= @stock.try(:high) %></p>
-  <p>Daily Low: <%= @stock.try(:low) %></p>
-  <hr>
-  <p>Calculation Price: <%= @stock.try(:calculation_price) %></p>
-  <p>Latest Volume: <%= @stock.try(:latest_volume) %></p>
-  <p>Profit Margin: <%= @stock.try(:company_profit_margin) %>%</p>
-  <p>Company Gross profit: <%= @stock.try(:company_gross_profit)%></p>
-  <p>Latest Earnings Per Share: <%= @stock.try(:latest_earnings_per_share) %></p>
-  <p>Shares Outstanding: <%= @stock.shares_outstanding %></p>
-  <p>Revenue Per Share: <%= @stock.revenue_per_share %></p>
-  <p>Revenue Per Employee: <%= @stock.revenue_per_employee%></p>
-  <p>Company Cash on Hand: <%= @stock.company_cash %></p>
-  <p>Total Company Debt: <%= @stock.company_debt %></p>
-
+  </center>
+  <div class="box-body">
+    <div class="row text-center">
+      <div class="col-xs-12 col-md-6">
+        <div class="row">
+          <div class="col-xs-6">
+            <h5>Low: </h5>
+            <h4>$<%= @stock.try(:low) %></h4>
+          </div>
+          <div class="col-xs-6">
+            <h5>High: </h5>
+            <h4>$<%= @stock.try(:high) %></h4>
+          </div>
+        </div>
+        <div class="row">
+          <br>
+          <h4>Latest Volume:</h4>
+          <p>$<%= @stock.try(:latest_volume) %></p>
+          <br>
+        </div>
+      </div>
+      <div class="col-xs-12 col-md-6">
+        <input type="text" class="knob" value="<%= @stock.try(:company_profit_margin).to_i %>" data-width="120" data-height="120" data-fgColor="#f56954">
+        <div class="knob-label">Profit Margin: <%= @stock.try(:company_profit_margin) %>%</div>
+      </div>
+    </div>
+    <hr>
+    <div class="row text-center">
+      <div class="col-xs-6">
+        <p>Open:</p>
+        <h3><%= @stock.try(:open)%></h3>
+      </div>
+      <div class="col-xs-6">
+        <p>Close:</p>
+        <h3><%= @stock.try(:close) %></h3>
+      </div>
+    </div>
+    <hr>
+    <div class="row">
+      <div class="col-xs-12 text-center">
+        <p><h3>$<%= @stock.try(:market_cap)%></h3><h6><i>Market Cap</i></h6></p>
+        <p><h3><%= @stock.shares_outstanding %></h3><h6><i>Shares Outstanding</i></h6></p>
+        <p><h3>$<%= @stock.revenue_per_share %></h3><h6><i>Revenue Per Share</i></h6></p>
+        <p><h3>$<%= @stock.revenue_per_employee%></h3><h6><i>Revenue Per Employee</i></h6></p>
+        <p><h3>$<%= @stock.company_cash %></h3><h6><i>Company Cash on Hand</i></h6></p>
+        <p><h3>$<%= @stock.company_debt %></h3><h6><i>Total Company Debt</i></h6></p>
+      </div>
+    </div>
+  </div>
 </div>

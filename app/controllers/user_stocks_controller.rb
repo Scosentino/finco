@@ -3,19 +3,6 @@ class UserStocksController < ApplicationController
     @stocks = current_user.user_stocks
   end
 
-  # def search
-  #   if params[:id] == ""
-  #     @nothing = "Enter a Valid Symbol"
-  #   else
-  #     begin
-  #       @stock = Stock.find_by(symbol: params[:id])
-  #       @stock = StockQuote::Stock.quote(params[:id]) if @stock.blank?
-  #     rescue
-  #       @error = "Check your search and try again."
-  #     end
-  #   end
-  # end
-
   def show
     @user_stock = UserStock.find_by_id(params[:id])
     if @user_stock.present?

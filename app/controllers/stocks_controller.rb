@@ -9,19 +9,19 @@ class StocksController < ApplicationController
       if params[:stock][:symbol].blank?
         @nothing = "Enter a Valid Symbol"
       else
-        begin
-          @stock = Stock.find_by(symbol: params[:stock][:symbol].upcase)
-          if @stock.blank?
-            @stock = return_stock_data(params[:stock][:symbol])
-            if @stock.present?
-              @stock = Stock.save_new_stock(@stock)
+        ##begin
+          stock = Stock.find_by(symbol: params[:stock][:symbol].upcase)
+          if stock.blank?
+            stock = return_stock_data(params[:stock][:symbol])
+            if stock.present?
+              @stock = Stock.save_new_stock(stock)
             else
               @error = "Check your search and try again."
             end
           end
-        rescue
-          @error = "Check your search and try again."
-        end
+        ##rescue
+          ##@error = "Check your search and try again."
+        ##end
       end
     else
       @error = "Check your search and try again."
