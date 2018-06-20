@@ -17,7 +17,6 @@ require "capistrano/deploy"
 require "capistrano/scm/git"
 install_plugin Capistrano::SCM::Git
 
-
 # Include capistrano-rails
 require 'capistrano/rails'
 require 'capistrano/rvm'
@@ -29,7 +28,7 @@ require 'capistrano/sidekiq'
 require 'capistrano/sidekiq/monit'
 install_plugin Capistrano::Puma  # Default puma tasks
 install_plugin Capistrano::Puma::Nginx
-
+install_plugin Capistrano::Puma::Monit
 
 # Load custom tasks from `lib/capistrano/tasks` if you have any defined
 Dir.glob("lib/capistrano/tasks/*.rake").each { |r| import r }
