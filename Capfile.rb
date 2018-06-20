@@ -25,6 +25,8 @@ require 'capistrano/bundler'
 require 'capistrano/rails/migrations'
 require 'capistrano/rails/assets'
 require 'capistrano/puma'
+require 'capistrano/sidekiq'
+require 'capistrano/sidekiq/monit'
 install_plugin Capistrano::Puma  # Default puma tasks
 install_plugin Capistrano::Puma::Nginx
 
