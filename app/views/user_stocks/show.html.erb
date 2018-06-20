@@ -12,7 +12,7 @@
         <!-- Add the bg color to the header using any of the bg-* classes -->
         <div class="widget-user-header">
           <div class="widget-user-username pull-right">
-            <%= link_to 'Stop Tracking', '#', class: 'btn btn-default'  %>
+            <%= link_to 'Stop Tracking', user_stock_path(id: @stock.id), method: :delete, class: 'btn btn-default'  %>
           </div>
           <h3 class="widget-user-username"><%= @stock.chief_executive_officer %></h3>
           <h5 class="widget-user-desc">Current CEO</h5>

@@ -45,11 +45,11 @@ class UserStocksController < ApplicationController
   end
 
   def destroy
-    @stock = UserStock.find_by(id: params[:id])
+    @stock = UserStock.find_by(stock_id: params[:id])
     if @stock.destroy
-      redirect_to user_stocks_path, notice: "Stock Deleted"
+      redirect_to user_stocks_path, notice: "Stopped Tracking"
     else
-      redirect_to user_stocks_path, notice: "Can't destroy stock"
+      redirect_to user_stocks_path, notice: "Something Went Wrong"
     end
   end
 
