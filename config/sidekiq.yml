@@ -1,0 +1,8 @@
+:schedule:
+  update_open_close_stock_price_update_worker_morning:
+    cron: '35 09 * * * *'
+    class: UpdateOpenCloseStockPriceWorker
+
+  update_open_close_stock_price_update_worker_evening:
+    cron: '30 16 * * * *'
+    class: UpdateOpenCloseStockPriceWorker

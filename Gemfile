@@ -5,6 +5,8 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+
+gem 'sidekiq-scheduler'
 gem 'redis', '~> 3.0'
 gem 'sidekiq', require: 'sidekiq/web'
 gem 'gravatar_image_tag'
