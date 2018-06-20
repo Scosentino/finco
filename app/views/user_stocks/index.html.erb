@@ -22,7 +22,6 @@
     </div>
   </div>
 </section>
-
 <script>
 <% if current_user.user_stocks.count > 0 %>
 setInterval(function() {
@@ -32,7 +31,7 @@ setInterval(function() {
         dataType: 'script',
         success: function(data) {
             console.log('defef');
-            
+
         }
     });
 }
