@@ -1,0 +1,8 @@
+<div class="col-sm-12 col-md-2">
+  <!-- <h4 class="text-center">Success</h4> -->
+  <div class="color-palette-set text-center">
+    <div class="bg-green disabled color-palette user-stock-title"><span><%= stock.stock.symbol %></span></div>
+    <div class="bg-green color-palette"><span><%= stock.stock.latest_price %></span></div>
+    <div class="bg-green-active color-palette"><span><%= stock.stock.running_low + ' - ' + stock.stock.running_high%></span></div>
+  </div>
+</div>

@@ -7,20 +7,35 @@
           <%= link_to 'Find More Stocks', stocks_path %>
     </div>
     <div class="box-body">
-      <div class="row">
-        <% @stocks.each do |stock|%>
-        <%= link_to stock do %>
-        <div class="col-sm-12 col-md-2">
-          <!-- <h4 class="text-center">Success</h4> -->
-          <div class="color-palette-set text-center">
-            <div class="bg-green disabled color-palette user-stock-title"><span><%= stock.stock.symbol %></span></div>
-            <div class="bg-green color-palette"><span><%= stock.stock.latest_price %></span></div>
-            <div class="bg-green-active color-palette"><span><%= stock.stock.running_low + ' - ' + stock.stock.running_high%></span></div>
-          </div>
+      <div class="row" id="user_stocks_index_row">
+
+        <% if current_user.user_stocks.count == 0 %>
+        <div class="col-md-4 col-md-offset-4">
+          <%= link_to stocks_path do %>
+           <%= image_tag '/img/no-stocks.png', class: 'img-responsive' %>
+          <% end %>
         </div>
+        <% else %>
+          <%= render partial: '/user_stocks/partials/stocks', locals: {stocks: @stocks} %>
         <% end %>
-        <%end%>
       </div>
     </div>
   </div>
 </section>
+
+<script>
+<% if current_user.user_stocks.count > 0 %>
+setInterval(function() {
+  $.ajax ( {
+        type: 'get',
+        url: '/stock-list',
+        dataType: 'script',
+        success: function(data) {
+            console.log('defef');
+            
+        }
+    });
+}
+, 5000);
+<% end %>
+</script>

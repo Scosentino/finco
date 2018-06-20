@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :user_stocks
+  has_many :stocks, through: :user_stocks
 
   def full_name
     full_name + ' ' + last_name

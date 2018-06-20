@@ -1,0 +1,11 @@
+<% Stock.all.each do |stock|%>
+  <%= link_to stock_path(stock: {symbol: stock.symbol}) do%>
+    <% if stock.latest_price < stock.open %>
+      <%= render partial: '/stocks/partials/stock-colors/red', locals: {stock: stock}%>
+    <% elsif stock.latest_price > stock.open %>
+      <%= render partial: '/stocks/partials/stock-colors/green', locals: {stock: stock}%>
+    <% else%>
+      <%= render partial: '/stocks/partials/stock-colors/grey', locals: {stock: stock}%>
+    <% end %>
+  <% end %>
+<% end %>

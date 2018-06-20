@@ -1,0 +1,7 @@
+<div class="col-xs-12 col-md-2">
+  <div class="color-palette-set">
+    <div class="bg-gray disabled color-palette user-stock-title"><span><%= stock.symbol %></span></div>
+    <div class="bg-gray color-palette text-center"><span><%= stock.latest_price%></span></div>
+    <div class="bg-gray-active color-palette text-center"><span><%= link_to "#{stock.sector}", stock_path(stock: {symbol: stock.symbol}), class: 'view-stock-show' %></span></div>
+  </div>
+</div>

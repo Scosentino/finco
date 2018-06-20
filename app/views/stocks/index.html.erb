@@ -7,18 +7,8 @@
       <button class="btn btn-default pull-right"type="button" data-toggle="modal" data-target="#modal-search-stock-market">Find more stocks</button>
     </div>
     <div class="box-body">
-      <div class="row">
-        <% Stock.all.each do |stock|%>
-        <%= link_to stock_path(stock: {symbol: stock.symbol}) do %>
-        <div class="col-xs-12 col-md-2">
-          <div class="color-palette-set">
-            <div class="bg-green disabled color-palette user-stock-title"><span><%=  stock.symbol %></span></div>
-            <div class="bg-green color-palette text-center"><span><%= stock.latest_price %></span></div>
-            <div class="bg-green-active color-palette text-center"><span><%= link_to "#{stock.sector}", stock_path(stock: {symbol: stock.symbol}), class: 'view-stock-show' %></span></div>
-          </div>
-        </div>
-        <% end %>
-        <% end %>
+      <div class="row" id="public_market_index">
+        <%= render '/stocks/partials/stocks' %>
       </div>
     </div>
   </div>
@@ -26,3 +16,18 @@
 
 <!-- Stock Market Search Modal -->
 <%= render '/stocks/partials/stock-search'%>
+
+<script>
+<% if current_user.user_stocks.count > 0 %>
+setInterval(function() {
+  $.ajax ( {
+        type: 'get',
+        url: '/market-update',
+        dataType: 'script',
+        success: function(data) {
+        }
+    });
+}
+, 5000);
+<% end %>
+</script>

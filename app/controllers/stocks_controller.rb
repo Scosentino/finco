@@ -1,4 +1,11 @@
 class StocksController < ApplicationController
+
+  def update_market
+    render 'market_update.js.erb'
+  end
+
+
+
   def index
     @stocks = Stock.all
 

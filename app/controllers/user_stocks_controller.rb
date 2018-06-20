@@ -53,6 +53,13 @@ class UserStocksController < ApplicationController
     end
   end
 
+  def stock_list
+    @stocks = current_user.user_stocks
+    render 'stock_update.js.erb'
+  end
+
+
+
   private
 
   def user_stock_params

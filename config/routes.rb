@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   mount Sidekiq::Web => '/sidekiq'
   get '/show', to: 'stocks#show', as: :stock
 
+  get '/stock-list', to: 'user_stocks#stock_list'
+  get '/market-update', to: 'stocks#market_update'
 
 
 
@@ -17,9 +19,4 @@ Rails.application.routes.draw do
       root 'devise/sessions#new', as: :unauthenticated_root
     end
   end
-
-
-
-
-
 end
