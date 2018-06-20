@@ -51,7 +51,21 @@ class Stock < ApplicationRecord
         revenue_per_share: stock_object[:stock_stats].revenue_per_share,
         revenue_per_employee: stock_object[:stock_stats].revenue_per_employee,
         company_cash: stock_object[:stock_stats].cash,
-        company_debt: stock_object[:stock_stats].debt
+        company_debt: stock_object[:stock_stats].debt,
+        net_income: stock_object[:stock_financials].financials.first["netIncome"],
+        total_revenue: stock_object[:stock_financials].financials.first["totalRevenue"],
+        current_cash: stock_object[:stock_financials].financials.first["currentCash"],
+        cost_of_revenue: stock_object[:stock_financials].financials.first["costOfRevenue"],
+        research_and_development: stock_object[:stock_financials].financials.first["researchAndDevelopment"],
+        operating_expenses: stock_object[:stock_financials].financials.first["operatingExpense"],
+        operating_income: stock_object[:stock_financials].financials.first["operatingIncome"],
+        gross_profit: stock_object[:stock_financials].financials.first["grossProfit"],
+        current_debt: stock_object[:stock_financials].financials.first["currentDebt"],
+        current_assets: stock_object[:stock_financials].financials.first["currentAssets"],
+        total_assets: stock_object[:stock_financials].financials.first["totalAssets"],
+        total_debt: stock_object[:stock_financials].financials.first["totalDebt"],
+        total_cash: stock_object[:stock_financials].financials.first["totalCash"],
+        report_date: stock_object[:stock_financials].financials.first["reportDate"]
     )
   end
 

@@ -3,19 +3,35 @@
 </section>
 
 <section class="content">
-  <div class="row">
-    <div class="col-md-4">
-      <%= form_for @user_stock do |f| %>
-      <%= f.hidden_field :stock_id, value: @stock.id %>
-      <%= f.hidden_field :user_id, value: current_user.id %>
-      <%= f.submit 'Track', class: 'btn btn-default'%>
-      <% end %>
+  <div class="box">
+    <div class="box-body">
+      <div class="row">
+        <div class="col-md-6">
+          <h2>Add this stock to your tracked stocks for real-time access to Company and Stock information.</h2>
+          <ul>
+            <li><strong>General Information:</strong> View Sector and Industry and other company information.</li>
+            <li><strong>Financial Overview:</strong> View high level financial information on the company.</li>
+            <li><strong>Latest Quarterly Report:</strong> View key information from a Companies latest quarterly report.</li>
+          </ul>
+
+        </div>
+      <div class="col-md-6 text-center">
+        <div class="row">
+          <h1><%= @stock.try(:company_name)%></h1>
+          <h6><i>Symbol: <%= @stock.try(:symbol) %></i></h6>
+          <p><%= image_tag(@stock.try(:logo)) %></p>
+          <h3><%= @stock.latest_price %></h3>
+        </div>
+        <div class="row">
+          <%= form_for @user_stock do |f| %>
+          <%= f.hidden_field :stock_id, value: @stock.id %>
+          <%= f.hidden_field :user_id, value: current_user.id %>
+          <%= f.submit 'Track', class: 'btn btn-default'%>
+          <% end %>
+        </div>
+      </div>
     </div>
   </div>
-  <br>
-  <div class="row">
-    <div class="col-md-4">
-      <p>Soon you will be able to create a position from Tracked stocks to replicate your portfolio movement</p>
-    </div>
-  </div>
+</div>
+
 </section>

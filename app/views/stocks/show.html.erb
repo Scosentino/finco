@@ -13,6 +13,7 @@
             <div class="widget-user-header">
               <div class="widget-user-username pull-right">
                 <%= link_to 'Track this Stock', new_user_stock_path(id: @stock.id), class: 'btn btn-default'  %>
+                <p><%= @stock.latest_price %></p>
               </div>
               <h3 class="widget-user-username"><%= @stock.try(:chief_executive_officer) %></h3>
               <h5 class="widget-user-desc">Current CEO</h5>
@@ -73,32 +74,32 @@
 
     <div class="tab-content">
       <div class="tab-pane active" id="tab_1-1">
-        <%if @stock %>
-        <p>Company Main Sector: <%= @stock.try(:sector) %></p>
-        <p>Market Cap: <%= @stock.try(:market_cap)%></p>
-        <p>Today's Close: <%= @stock.try(:close) %><h6>Note- If before market close this value will be from previous day</h6></p>
-        <p>Current Price: <%= @stock.try(:latest_price) %></p>
-        <p>Current Price Pulled at: <%= @stock.try(:latest_time) %></p>
-        <p>Daily High: <%= @stock.try(:high) %></p>
-        <p>Daily Low: <%= @stock.try(:low) %></p>
-        <p>Primary Exchange: <%= @stock.try(:primary_exchange)%></p>
-        <p>Calculation Price: <%= @stock.try(:calculation_price)%></p>
-        <p>Open Time: <%= @stock.try(:open_time)%></p>
-        <p>Close Time: <%= @stock.try(:close_time)%></p>
-        <p>High: <%= @stock.try(:high)%></p>
-        <p>Low: <%= @stock.try(:low) %></p>
-        <p>Latest Time: <%= @stock.try(:latest_time)%></p>
-        <p>Latest Update: <%= @stock.try(:latest_update)%></p>
-        <p>Latest Volume: <%= @stock.try(:latest_volume)%></p>
-
-
-        <% elsif @nothing %>
-        <%= @nothing%>
-        <%end %>
-
-        <% if @error %>
-          <%= @error %>
-        <% end %>
+        <div class="box-body">
+          <div class="row text-center">
+            <div class="col-xs-12 col-md-6">
+              <div class="row">
+                <div class="col-xs-6">
+                  <h5>Low: </h5>
+                  <h4>$<%= @stock.try(:low) %></h4>
+                </div>
+                <div class="col-xs-6">
+                  <h5>High: </h5>
+                  <h4>$<%= @stock.try(:high) %></h4>
+                </div>
+              </div>
+              <div class="row">
+                <br>
+                <h4>Latest Volume:</h4>
+                <p>$<%= @stock.try(:latest_volume) %></p>
+                <br>
+              </div>
+            </div>
+            <div class="col-xs-12 col-md-6">
+              <input type="text" class="knob" value="<%= @stock.try(:company_profit_margin).to_i %>" data-width="120" data-height="120" data-fgColor="#f56954">
+              <div class="knob-label">Profit Margin: <%= @stock.try(:company_profit_margin) %>%</div>
+            </div>
+          </div>
+        </div>
 
       </div>
 
