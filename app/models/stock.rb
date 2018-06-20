@@ -3,7 +3,8 @@ class Stock < ApplicationRecord
   has_many :users, through: :user_stocks
   scope :trending_stocks, -> { where(trending: true) }
   scope :not_trending_stocks, -> { where(trending: false) }
-
+  has_many :news_articles
+  
   def is_trending?
     stock_users = self.user_stocks.count
     users = User.all.count

@@ -4,8 +4,6 @@ class StocksController < ApplicationController
     render 'market_update.js.erb'
   end
 
-
-
   def index
     @stocks = Stock.all
 
@@ -20,6 +18,7 @@ class StocksController < ApplicationController
           if @stock.blank?
             stock = return_stock_data(params[:stock][:symbol])
             if stock.present?
+              byebug
               @stock = Stock.save_new_stock(stock)
             else
               @error = "Check your search and try again."
@@ -42,6 +41,7 @@ class StocksController < ApplicationController
         stock_stats: StockQuote::Stock.stats(symbol),
         stock_financials: StockQuote::Stock.financials(symbol),
         stock_relevant_companies: StockQuote::Stock.relevant(symbol),
+        stock_news: StockQuote::Stock.news(symbol)
     }
     rescue Execption => e
       @error = "Check your search and try again."

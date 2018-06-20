@@ -1,7 +1,7 @@
 <% stocks.each do |stock|%>
   <%= link_to stock do %>
     <% if stock.stock.latest_price < stock.stock.open %>
-      <%= render partial: '/user_stocks/partials/stocks/grey', locals: {stock: stock}%>
+      <%= render partial: '/user_stocks/partials/stocks/red', locals: {stock: stock}%>
     <% elsif stock.stock.latest_price > stock.stock.open %>
       <%= render partial: '/user_stocks/partials/stocks/green', locals: {stock: stock}%>
     <% else%>
