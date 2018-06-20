@@ -12,8 +12,8 @@
             <!-- Add the bg color to the header using any of the bg-* classes -->
             <div class="widget-user-header">
               <div class="widget-user-username pull-right">
-                <%= link_to 'Track this Stock', new_user_stock_path(id: @stock.id), class: 'btn btn-default'  %>
-                <p><%= @stock.latest_price %></p>
+                <p> <%= link_to 'Track this Stock', new_user_stock_path(id: @stock.id), class: 'btn btn-default'  %></p>
+                <p class="pull-right"> $<%= @stock.latest_price %></p>
               </div>
               <h3 class="widget-user-username"><%= @stock.try(:chief_executive_officer) %></h3>
               <h5 class="widget-user-desc">Current CEO</h5>
