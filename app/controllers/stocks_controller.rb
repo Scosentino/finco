@@ -19,7 +19,6 @@ class StocksController < ApplicationController
             stock = return_stock_data(params[:stock][:symbol])
             if stock.present?
               @stock = Stock.save_new_stock(stock)
-              byebug
             else
               @error = "Check your search and try again."
             end
