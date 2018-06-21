@@ -6,24 +6,25 @@
       <ul class="timeline">
         <!-- label -->
         <li class="time-label">
-          <span class="bg-green"> [Today's Date] </span>
+          <!-- <span class="bg-green"> <%#= Date.today %></span> -->
         </li>
 
         <!-- News Article -->
+        <% @stock.news_articles.each do |article| %>
         <li>
-          <i class="fa fa-news"></i>
+          <i class="fa fa-newspaper-o"></i>
           <div class="timeline-item">
-            <span class="time"><i class="fa fa-clock">[Time Stamp]</i></span>
-            <h3 class="timeline-header"> <a href="#">[News Article]</a></h3>
+            <span class="time"><i class="fa fa-clock-o"><%= article.published_at%></i></span>
+            <h3 class="timeline-header"> <a href="#"><%= article.headline%></a></h3>
             <div class="timeline-body">
-              [Description]
+              <%= article.summary %>
             </div>
             <div class="timeline-footer">
-              <a href="#">Read Article</a>
+              <a href="<%= article.url%>">Read Article</a>
             </div>
           </div>
         </li>
-
+        <% end %>
       </ul>
     </div>
   </div>
