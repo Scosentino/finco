@@ -4,7 +4,7 @@ class Stock < ApplicationRecord
   scope :trending_stocks, -> { where(trending: true) }
   scope :not_trending_stocks, -> { where(trending: false) }
   has_many :news_articles
-  
+
   def is_trending?
     stock_users = self.user_stocks.count
     users = User.all.count
@@ -66,7 +66,14 @@ class Stock < ApplicationRecord
         total_assets: stock_object[:stock_financials].financials.first["totalAssets"],
         total_debt: stock_object[:stock_financials].financials.first["totalDebt"],
         total_cash: stock_object[:stock_financials].financials.first["totalCash"],
-        report_date: stock_object[:stock_financials].financials.first["reportDate"]
+        report_date: stock_object[:stock_financials].financials.first["reportDate"],
+        news_articles: stock_object[:stock_news].news.map{|h| NewsArticle.new(
+          published_at: h['datetime'],
+          headline: h['headline'],
+          source: h['source'],
+          url: h['url'],
+          summary: h['summary'],
+          related_stocks: h['related'])}
     )
   end
 
