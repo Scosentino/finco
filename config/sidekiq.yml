@@ -17,4 +17,4 @@
 
   update_dividends_worker:
     class: UpdateDividendsWorker
-    cron: '0 0 1 * * America/New_York'
+    cron: '0 * * * * America/New_York'
