@@ -7,6 +7,8 @@ class UserStocksController < ApplicationController
     @user_stock = UserStock.find_by_id(params[:id])
     if @user_stock.present?
       @stock = @user_stock.stock
+      @dividends = @stock.dividends
+      @dividends_5yr_avg = (@stock.dividends.sum(:amount)/@stock.dividends.count).round(2)
     else
       redirect_to root_path
     end

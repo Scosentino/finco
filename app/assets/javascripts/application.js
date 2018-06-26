@@ -15,6 +15,7 @@
 //= require_tree .
 //= require bootstrap-sprockets
 //= require jquery.knob
+//= require jquery.easyPaginate.js
 
 $(function() {
 

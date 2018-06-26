@@ -1,0 +1,39 @@
+<div class="tab-pane" id="tab_1-5">
+<div class="box-body">
+  <div class="row">
+    <h2>5yr Average: </h2>
+    <h3><%=   @dividends_5yr_avg %></h3>
+  </div>
+  <div id="dividend_pagination">
+    <% @dividends.each do |dividend| %>
+    <div class="row dividend-payment-items">
+      <div class="col-xs-12 col-md-4 col-md-offset-4">
+        <div class="color-palette-set">
+          <div class="bg-gray disabled color-palette user-stock-title"><span>$<%= dividend.amount%></span></div>
+          <div class="bg-gray color-palette text-center"><span><%= dividend.declared_date%></span></div>
+          <div class="bg-gray-active color-palette text-center"><span><%= dividend.dividend_type%></span></div>
+        </div>
+      </div>
+    </div>
+    <% end %>
+  </div>
+
+
+</div>
+
+</div>
+
+
+<script type="text/javascript">
+$(document).ready(function(){
+  $('#dividend_pagination').easyPaginate({
+      paginateElement: '.dividend-payment-items',
+      elementsPerPage: 1,
+      effect: 'slide',
+      firstButton: false,
+      lastButton: false,
+      nextButtonText: '<i class="fa fa-angle-right"></i>',
+      prevButtonText: '<i class="fa fa-angle-left"></i>'
+  });
+});
+</script>
