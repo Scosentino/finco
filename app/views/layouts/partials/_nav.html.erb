@@ -16,7 +16,13 @@
       <span class="icon-bar"></span>
     </a>
     <div class="navbar-custom-menu">
+
       <ul class="nav navbar-nav">
+
+        <% Market.all.order('market_percent').last(3).each do |market|%>
+        <li class="text-center"><span><p><%= market.mic %></p> <p><%= (market.market_percent * 100).round(1)%></p></span></li>
+        <% end %>
+
 
         <% if controller_name == 'stocks' && action_name == 'index' %>
           <li><a data-toggle="modal" data-target="#modal-search-stock-market"><i class="fas fa-search"></i> <span>Market Search</span></a></li>

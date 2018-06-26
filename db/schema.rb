@@ -10,10 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180620224950) do
+ActiveRecord::Schema.define(version: 20180626152226) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "markets", force: :cascade do |t|
+    t.string "mic"
+    t.string "venue_name"
+    t.bigint "tape_a"
+    t.bigint "tape_b"
+    t.bigint "tape_c"
+    t.float "market_percent"
+    t.bigint "last_updated"
+  end
 
   create_table "news_articles", force: :cascade do |t|
     t.string "published_at"

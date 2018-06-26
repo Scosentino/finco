@@ -10,3 +10,7 @@
   stock_price_update_worker:
     class: StockPriceUpdateWorker
     every: '30s'
+
+  update_market_price_worker:
+    class: UpdateMarketPriceWorker
+    every: '60s'  
