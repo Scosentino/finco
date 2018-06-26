@@ -20,7 +20,7 @@
       <ul class="nav navbar-nav">
 
         <% Market.all.order('market_percent').last(3).each do |market|%>
-        <li class="text-center"><span><p><%= market.mic %></p> <p><%= (market.market_percent * 100).round(1)%></p></span></li>
+        <li class="text-center market-li-item"><span><%= market.mic %> <br/> <%= (market.market_percent * 100).round(1)%></span></li>
         <% end %>
 
 
