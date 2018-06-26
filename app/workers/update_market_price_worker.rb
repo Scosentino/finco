@@ -19,10 +19,10 @@ class UpdateMarketPriceWorker
     require 'uri'
 
     uri = URI.parse("https://api.iextrading.com/1.0/market")
-    https = Net::HTTP.new(uri.host, uri.port)
+    https = Net::HTTPS.new(uri.host, uri.port)
     https.use_ssl = true
 
-    request = Net::HTTP::Get.new(uri.request_uri)
+    request = Net::HTTPS::Get.new(uri.request_uri)
 
     response = https.request(request)
     response.body
