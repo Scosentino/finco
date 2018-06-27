@@ -6,7 +6,7 @@
 </section>
 <section class="content">
 <div class="row">
-  <div class="col-md-6 col-sm-12 col-md-offset-3">
+  <div class="col-md-8 col-sm-12 col-md-offset-2">
           <!-- Widget: user widget style 1 -->
           <div class="box box-widget widget-user">
             <!-- Add the bg color to the header using any of the bg-* classes -->
@@ -57,7 +57,7 @@
 </div>
 
 <div class="row">
-  <div class="col-md-6 col-md-offset-3">
+  <div class="col-md-8 col-md-offset-2">
     <div class="nav-tabs-custom">
     <ul class="nav nav-tabs pull-right">
       <li class="active"><a href="#tab_1-1" data-toggle="tab">General information</a></li>
@@ -88,26 +88,56 @@
                 </div>
               </div>
               <div class="row">
-                <br>
-                <h4>Latest Volume:</h4>
-                <p><%= @stock.try(:latest_volume) %> Shares</p>
-                <br>
+                <div class="col-md-6">
+                  <h4>Latest Volume:</h4>
+                  <p><%= @stock.try(:latest_volume) %> Shares</p>
+                </div>
+                <div class="col-md-6">
+                  <h4>Float:</h4>
+                  <p><%= @stock.try(:float)%> </p>
+                </div>
               </div>
             </div>
             <div class="col-xs-12 col-md-6">
-              <input type="text" class="knob" value="<%= @stock.try(:company_profit_margin).to_i %>" data-width="120" data-height="120" data-fgColor="#f56954">
+              <input type="text" class="knob" value="<%= @stock.try(:company_profit_margin).to_i %>" data-width="120" data-height="120" data-fgColor="#000000">
               <div class="knob-label">Profit Margin: <%= @stock.try(:company_profit_margin) %>%</div>
             </div>
           </div>
+          <hr>
+          <div class="row">
+            <h3 class="text-center">Overview of Ownership</h3>
+            <br>
+            <div class="col-md-6 text-center">
+              <input type="text" class="knob" value="<%= @stock.try(:insider_percent).to_i %>" data-width="120" data-height="120" data-fgColor="#000000">
+              <div class="knob-label">Insider Ownership: <%= @stock.try(:insider_percent)%>%</div>
+            </div>
+            <br>
+            <div class="col-md-6 text-center">
+              <input type="text" class="knob" value="<%= @stock.try(:institution_percent).to_i %>" data-width="120" data-height="120" data-fgColor="#000000">
+              <div class="knob-label">Institutional Ownership: <%= @stock.try(:institution_percent)%>%</div>
+            </div>
+          </div>
+          <hr>
+          <div class="row">
+            <h3 class="text-center">Key Stats</h3>
+            <br>
+            <div class="col-md-6">
+              <h4 class="text-center">$<%= @stock.try(:latest_eps )%></h4>
+              <h5>Latest EPS</h5>
+              <h4 class="text-center"><%= @stock.try(:latest_eps_date )%></h4>
+              <h5>Latest EPS Date</h5>
+            </div>
+            <div class="col-md-6">
+              <h4 class="text-center">$<%= @stock.try(:consensus_eps)%></h4>
+              <h5>Expected Dividend</h5>
+              <h4 class="text-center"><%= @stock.try(:expected_dividend_date)[0..10]%></h4>
+              <h5>Expected Dividend Date</h5>
+            </div>
+          </div>
         </div>
-
       </div>
-
-
-
     </div>
   </div>
-
   </div>
 </div>
 </section>

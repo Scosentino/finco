@@ -39,14 +39,86 @@
       </div>
     </div>
     <hr>
+    <div class="row text-center">
+      <div class="col-md-12">
+        <div class="box box-solid">
+          <a href="#" type="button" data-toggle="tooltip" data-html="true" title="<b>Five Year Percent Change</b><br><h5><%=@stock.try(:five_year_percent_change)%>%">
+          <div class="progress vertical">
+            <div class="progress-bar progress-bar-info progress-bar-striped" role="progressbar" aria-valuenow="<%= @stock.try(:five_year_percent_change)%>" aria-valuemin="0" aria-valuemax="100" style="height: <%=@stock.five_year_percent_change%>%">
+              <span class="sr-only"><%= @stock.five_year_percent_change %>%</span>
+              <p>5yr</p>
+            </div>
+          </div>
+          </a>
+          <a href="#" type="button" data-toggle="tooltip" data-html="true" title="<b>Two Year Percent Change</b><br><h5><%=@stock.try(:two_year_percent_change)%>%">
+          <div class="progress vertical">
+            <div class="progress-bar progress-bar-info progress-bar-striped" role="progressbar" aria-valuenow="<%= @stock.try(:two_year_percent_change)%>" aria-valuemin="0" aria-valuemax="100" style="height: <%=@stock.two_year_percent_change%>%">
+              <span class="sr-only"><%= @stock.two_year_percent_change %>%</span>
+              <p>2yr</p>
+            </div>
+          </div>
+          </a>
+          <a href="#" type="button" data-toggle="tooltip" data-html="true" title="<b>One Year Percent Change</b><br><h5><%=@stock.try(:one_year_percent_change)%>%">
+          <div class="progress vertical">
+            <div class="progress-bar progress-bar-info progress-bar-striped" role="progressbar" aria-valuenow="<%= @stock.try(:one_year_percent_change)%>" aria-valuemin="0" aria-valuemax="100" style="height: <%=@stock.one_year_percent_change%>%">
+              <span class="sr-only"><%= @stock.one_year_percent_change %>%</span>
+              <p>1yr</p>
+            </div>
+          </div>
+          </a>
+          <a href="#" type="button" data-toggle="tooltip" data-html="true" title="<b>Six Month Percent Change</b><br><h5><%=@stock.try(:six_month_percent_change)%>%">
+          <div class="progress vertical">
+            <div class="progress-bar progress-bar-info progress-bar-striped" role="progressbar" aria-valuenow="<%= @stock.try(:six_month_percent_change)%>" aria-valuemin="0" aria-valuemax="100" style="height: <%=@stock.six_month_percent_change%>%">
+              <span class="sr-only"><%= @stock.six_month_percent_change %>%</span>
+              <p>6Mo</p>
+            </div>
+          </div>
+          </a>
+          <a href="#" type="button" data-toggle="tooltip" data-html="true" title="<b>Three Month Percent Change</b><br><h5><%=@stock.try(:three_month_percent_change)%>%">
+          <div class="progress vertical">
+            <div class="progress-bar progress-bar-info progress-bar-striped" role="progressbar" aria-valuenow="<%= @stock.try(:three_month_percent_change)%>" aria-valuemin="0" aria-valuemax="100" style="height: <%=@stock.three_month_percent_change%>%">
+              <span class="sr-only"><%= @stock.three_month_percent_change %>%</span>
+              <p>3Mo</p>
+            </div>
+          </div>
+          </a>
+          <a href="#" type="button" data-toggle="tooltip" data-html="true" title="<b>One Month Percent Change</b><br><h5><%=@stock.try(:one_month_percent_change)%>%">
+          <div class="progress vertical">
+            <div class="progress-bar progress-bar-info progress-bar-striped" role="progressbar" aria-valuenow="<%= @stock.try(:one_month_percent_change)%>" aria-valuemin="0" aria-valuemax="100" style="height: <%=@stock.one_month_percent_change%>%">
+              <span class="sr-only"><%= @stock.one_month_percent_change %>%</span>
+              <p>1Mo</p>
+            </div>
+          </div>
+          </a>
+          <a href="#" type="button" data-toggle="tooltip" data-html="true" title="<b>Five Day Percent Change</b><br><h5><%=@stock.try(:five_day_percent_change)%>%">
+          <div class="progress vertical">
+            <div class="progress-bar progress-bar-info progress-bar-striped" role="progressbar" aria-valuenow="<%= @stock.try(:five_day_percent_change)%>" aria-valuemin="0" aria-valuemax="100" style="height: <%=@stock.five_day_percent_change%>%">
+              <span class="sr-only"><%= @stock.five_day_percent_change %>%</span>
+              <p>5Day</p>
+            </div>
+          </div>
+          </a>
+        </div>
+      </div>
+
+    </div>
+    <hr>
     <div class="row">
-      <div class="col-xs-12 text-center">
+      <div class="col-xs-6 text-center">
         <p><h3>$<%= @stock.try(:market_cap)%></h3><h6><i>Market Cap</i></h6></p>
-        <p><h3><%= @stock.shares_outstanding %></h3><h6><i>Shares Outstanding</i></h6></p>
-        <p><h3>$<%= @stock.revenue_per_share %></h3><h6><i>Revenue Per Share</i></h6></p>
-        <p><h3>$<%= @stock.revenue_per_employee%></h3><h6><i>Revenue Per Employee</i></h6></p>
-        <p><h3>$<%= @stock.company_cash %></h3><h6><i>Company Cash on Hand</i></h6></p>
-        <p><h3>$<%= @stock.company_debt %></h3><h6><i>Total Company Debt</i></h6></p>
+        <p><h3><%= @stock.try(:shares_outstanding) %></h3><h6><i>Shares Outstanding</i></h6></p>
+        <p><h3>$<%= @stock.try(:revenue_per_share) %></h3><h6><i>Revenue Per Share</i></h6></p>
+        <p><h3>$<%= @stock.try(:revenue_per_employee)%></h3><h6><i>Revenue Per Employee</i></h6></p>
+        <p><h3>$<%= @stock.try(:company_cash) %></h3><h6><i>Company Cash on Hand</i></h6></p>
+        <p><h3>$<%= @stock.try(:company_debt) %></h3><h6><i>Total Company Debt</i></h6></p>
+      </div>
+      <div class="col-xs-6 text-center">
+        <p><h3><%= @stock.try(:float) %></h3><h6><i>Float</i></h6></p>
+        <p><h3>$<%= @stock.try(:return_on_capital)%></h3><h6><i>Return on Capital</i></h6></p>
+        <p><h3>$<%= @stock.try(:return_on_assets) %></h3><h6><i>Return on Assets</i></h6></p>
+        <p><h3>$<%= @stock.try(:return_on_equity)%></h3><h6><i>Return on Equity</i></h6></p>
+        <p><h3><%= @stock.try(:short_interest) %></h3><h6><i>Short Interest</i></h6></p>
+        <p><h3><%= @stock.try(:short_ratio) %></h3><h6><i>Short Ratio</i></h6></p>
       </div>
     </div>
   </div>

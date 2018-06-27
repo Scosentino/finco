@@ -1,8 +1,23 @@
 <div class="tab-pane" id="tab_1-5">
 <div class="box-body">
   <div class="row">
-    <h2>5yr Average: </h2>
-    <h3><%=   @dividends_5yr_avg %></h3>
+    <div class="col-md-2">
+      <h2>5yr Average: </h2>
+      <h3><%=   @dividends_5yr_avg %></h3>
+
+    </div>
+    <div class="col-md-5">
+      <p><h3>$<%= @stock.try(:dividend_rate)%></h3><h6><i>Dividend Rate</i></h6></p>
+      <p><h3>$<%= @stock.try(:dividend_yield)%></h3><h6><i>Dividend Yield</i></h6></p>
+      <p><h3>$<%= @stock.try(:market_cap)%></h3><h6><i>Market Cap</i></h6></p>
+      <p><h3>$<%= @stock.try(:latest_eps)%></h3><h6><i>Latest EPS</i></h6></p>
+    </div>
+    <div class="col-md-5">
+      <p><h3><%= @stock.try(:consensus_eps)%></h3><h6><i>Upcoming Estimated EPS</i></h6></p>
+      <p><h3><%= @stock.try(:number_of_estimates)%></h3><h6><i>Number of Estimates</i></h6></p>
+      <p><h3><%= @stock.try(:eps_surprise_percent)%>%</h3><h6><i>Latest Difference Between Expectation %</i></h6></p>
+      <p><h3>$<%= @stock.try(:eps_surprise_dollar)%></h3><h6><i>Latest Difference Between Expectation $</i></h6></p>
+    </div>
   </div>
   <div id="dividend_pagination">
     <% @dividends.each do |dividend| %>

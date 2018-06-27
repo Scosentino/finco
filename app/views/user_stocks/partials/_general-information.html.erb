@@ -1,21 +1,39 @@
 <div class="tab-pane active" id="tab_1-1">
-  <%if @stock %>
-  <p>Current Price: <%= @stock.try(:latest_price) %></p>
-  <p><strong>Description</strong></p>
-  <p><%= @stock.company_description %></p>
-  <p>Company Industry: <%= @stock.try(:company_industry)%></p>
-  <%= link_to "#{@stock.company_website}", @stock.company_website%>
-  <hr>
-  <p>Market Cap: <%= @stock.try(:market_cap)%></p>
-  <p>Primary Exchange: <%= @stock.try(:primary_exchange)%></p>
-  <h5>Current Price Pulled at:<%= @stock.try(:latest_update)%> <%= @stock.try(:latest_time) %></h5>
+  <div class="row">
+    <div class="col-md-12">
+      <%if @stock %>
+      <p>Current Price: <%= @stock.try(:latest_price) %></p>
+      <p><strong>Description</strong></p>
+      <p><%= @stock.company_description %></p>
+      <p>Company Industry: <%= @stock.try(:company_industry)%></p>
+      <%= link_to "#{@stock.company_website}", @stock.company_website%>
+      <hr>
+      <p>Market Cap: <%= @stock.try(:market_cap)%></p>
+      <p>Primary Exchange: <%= @stock.try(:primary_exchange)%></p>
+      <h5>Current Price Pulled at:<%= @stock.try(:latest_update)%> <%= @stock.try(:latest_time) %></h5>
+      <% elsif @nothing %>
+      <%= @nothing%>
+      <%end %>
 
-  <% elsif @nothing %>
-  <%= @nothing%>
-  <%end %>
+      <% if @error %>
+        <%= @error %>
+      <% end %>
+    </div>
+  </div>
+  <div class="row">
+    <h3 class="text-center">Overview of Ownership</h3>
+    <br>
+    <div class="col-md-6 text-center">
+      <input type="text" class="knob" value="<%= @stock.try(:insider_percent).to_i %>" data-width="120" data-height="120" data-fgColor="#000000">
+      <div class="knob-label">Insider Ownership: <%= @stock.try(:insider_percent)%>%</div>
+    </div>
+    <br>
+    <div class="col-md-6 text-center">
+      <input type="text" class="knob" value="<%= @stock.try(:institution_percent).to_i %>" data-width="120" data-height="120" data-fgColor="#000000">
+      <div class="knob-label">Institutional Ownership: <%= @stock.try(:institution_percent)%>%</div>
+    </div>
+  </div>
 
-  <% if @error %>
-    <%= @error %>
-  <% end %>
+
 
 </div>

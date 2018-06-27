@@ -14,5 +14,30 @@ class AddFieldsToStocks < ActiveRecord::Migration[5.1]
     add_column :stocks, :total_debt, :string
     add_column :stocks, :total_cash, :string
     add_column :stocks, :report_date, :string
+    add_column :stocks, :short_interest, :string
+    add_column :stocks, :short_date, :string
+    add_column :stocks, :dividend_rate, :string
+    add_column :stocks, :dividend_yield, :string
+    add_column :stocks, :expected_dividend_date, :string
+    add_column :stocks, :latest_eps, :string
+    add_column :stocks, :latest_eps_date, :string
+    add_column :stocks, :float, :string
+    add_column :stocks, :return_on_equity, :string
+    add_column :stocks, :consensus_eps, :string
+    add_column :stocks, :number_of_estimates, :string
+    add_column :stocks, :eps_surprise_dollar, :string
+    add_column :stocks, :eps_surprise_percent, :string
+    add_column :stocks, :return_on_assets, :string
+    add_column :stocks, :return_on_capital, :string
+    add_column :stocks, :institution_percent, :string
+    add_column :stocks, :insider_percent, :string
+    add_column :stocks, :short_ratio, :string
+    add_column :stocks, :five_year_percent_change, :string
+    add_column :stocks, :two_year_percent_change, :string
+    add_column :stocks, :one_year_percent_change, :string
+    add_column :stocks, :six_month_percent_change, :string
+    add_column :stocks, :three_month_percent_change, :string
+    add_column :stocks, :one_month_percent_change, :string
+    add_column :stocks, :five_day_percent_change, :string
   end
 end
