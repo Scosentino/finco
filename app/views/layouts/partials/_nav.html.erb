@@ -25,10 +25,11 @@
 
 
         <% if controller_name == 'stocks' && action_name == 'index' %>
-          <li class="market-search-sm"><a data-toggle="modal" data-target="#modal-search-stock-market"><i class="fas fa-search"></i> <span>Market Search</span></a></li>
+          <li class="d-none d-md-block"><a data-toggle="modal" data-target="#modal-search-stock-market"><i class="fas fa-search"></i> <span>Market Search</span></a></li>
+          <li class="d-block d-sm-block d-md-none"><a data-toggle="modal" data-target="#modal-search-stock-market"><i class="fas fa-search"></i></a></li>
         <% else %>
-          <li class="market-search-sm"><%= link_to '<i class="fas fa-search"></i> <span>Market Search</span>'.html_safe, stocks_path%></li>
-          <li class="d-block d-sm-non d-md-none"><%= link_to '<i class="fas fa-search"></i>'.html_safe, stocks_path%></li>
+          <li class="d-none d-md-block"><%= link_to '<i class="fas fa-search"></i> <span>Market Search</span>'.html_safe, stocks_path%></li>
+          <li class="d-block d-sm-block d-md-none"><%= link_to '<i class="fas fa-search"></i>'.html_safe, stocks_path%></li>
         <% end %>
 
 
